@@ -1,23 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import Profile from "./Profile";
+import "./App.css";
+import { useState } from "react";
 
 function App() {
+  let data = [
+    {
+      name: "Brandon",
+      lastName: "Duarte Tsegai",
+      age: 29,
+      hobby: "Salsa",
+    },
+    {
+      name: "Fandon",
+      lastName: "Duarte Tsegai",
+      age: 29,
+      hobby: "Salsa",
+    },
+    {
+      name: "Trandon",
+      lastName: "Duarte Tsegai",
+      age: 29,
+      hobby: "Salsa",
+    },
+    {
+      name: "Krandon",
+      lastName: "Duarte Tsegai",
+      age: 29,
+      hobby: "Salsa",
+    },
+  ];
+  let [darkMode, setDarkMode] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className={darkMode ? "App darkMode" : "App"}>
+      <h1>
+        Exempellösning - Uppgift #2
+        <button
+          onClick={() => {
+            setDarkMode(!darkMode);
+          }}
         >
-          Learn React
-        </a>
-      </header>
+          {darkMode ? "Light mode" : "Dark mode"}
+        </button>
+      </h1>
+      {data.map((profile) => {
+        return <Profile profile={profile} />;
+      })}
     </div>
   );
 }
